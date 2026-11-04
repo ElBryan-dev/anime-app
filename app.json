@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "AnimeApp",
+    "slug": "anime-app",
+    "version": "1.0.0",
+    "orientation": "default",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0b0b12",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.animeapp"
+    },
+    "android": {
+      "package": "com.example.animeapp",
+      "adaptiveIcon": {
+        "backgroundColor": "#0b0b12"
+      }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": { "usesCleartextTraffic": true },
+          "ios": { "infoPlist": { "NSAppTransportSecurity": { "NSAllowsArbitraryLoads": true } } }
+        }
+      ],
+      "expo-video"
+    ]
+  }
+}

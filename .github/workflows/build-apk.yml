@@ -32,6 +32,12 @@ jobs:
       - name: Generar proyecto Android nativo
         run: npx expo prebuild --platform android --no-install
 
+      - name: Diagnóstico de módulos nativos
+        continue-on-error: true
+        run: |
+          npx expo-modules-autolinking resolve --platform android --json > /tmp/autolinking.json
+          node -e "const j=require('/tmp/autolinking.json');(j.modules||[]).forEach((m,i)=>(m.projects||[]).forEach(p=>console.log('MOD',i,m.packageName,m.packageVersion,JSON.stringify(p.publication))))"
+
       - name: Compilar APK
         working-directory: android
         run: ./gradlew assembleRelease --no-daemon

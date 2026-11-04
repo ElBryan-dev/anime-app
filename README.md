@@ -13,17 +13,13 @@ App móvil para Android y iPhone (una sola base de código con Expo / React Nati
 
 La app consume la API, así que esta debe estar accesible desde el teléfono.
 
-1. Haz un fork o clona `FxxMorgan/anime1v-api` y despliégalo (el repo incluye `render-build.sh` para Render, o cualquier VPS con Node 18+).
-2. Variables de entorno recomendadas en el servidor:
+La API ya viene incluida en la carpeta `server/` (copia de [anime1v-api](https://github.com/FxxMorgan/anime1v-api), licencia MIT) junto con un `Dockerfile` y un `render.yaml`.
 
-   ```
-   API_KEYS=tu-clave-secreta
-   DAILY_REQUEST_LIMIT=5000
-   NODE_ENV=production
-   ```
+1. En [render.com](https://render.com) inicia sesión con GitHub y elige **New → Blueprint**.
+2. Selecciona este repositorio y pulsa **Apply**. Render construye y despliega el servidor solo.
+3. Cuando termine, copia la URL que te da (algo como `https://anime-app-api.onrender.com`) y comprueba `/health`.
 
-   El límite por defecto es de 100 peticiones al día por clave; cada página de catálogo, búsqueda o episodio cuenta, así que súbelo para uso normal.
-3. Comprueba `https://tu-api/health`.
+La clave y el límite diario están en `render.yaml` (`API_KEYS` y `DAILY_REQUEST_LIMIT`); cámbialos allí si quieres. El plan gratuito de Render duerme el servicio tras un rato sin uso, así que la primera petición puede tardar ~1 minuto.
 
 ## 2. Ejecutar la app
 

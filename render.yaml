@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: anime-app-api
+    runtime: docker
+    dockerfilePath: ./server/Dockerfile
+    dockerContext: ./server
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: API_KEYS
+        value: dev-anime1v-key
+      - key: DAILY_REQUEST_LIMIT
+        value: "100000"
+      - key: NODE_ENV
+        value: production
